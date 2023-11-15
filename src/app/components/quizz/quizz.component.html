@@ -1,0 +1,27 @@
+<div class="quizz">
+    <div class="quizz__logo">
+        <img src="assets/images/logo.png" alt="">
+        <h3>{{title}}</h3>
+    </div>
+    <div  *ngIf="!isFinished" class="quizz__questions">
+        <h3>{{questionSelected?.question}}</h3>
+    </div>
+    <div *ngIf="!isFinished" class="quizz__options">
+        <button 
+        *ngFor="let option of questionSelected?.options" 
+        (click)="playerChoose(option.alias)"
+        class="quizz__options__button">
+            {{option.name}}
+        </button>
+    </div>
+    <div *ngIf="isFinished" class="quizz__results">
+        <h1>O Seu resultado é: </h1>
+        <p>{{results}}</p>
+    </div>
+    <button 
+    (click)="restartQuizz()"
+    class="quizz__options__button" 
+    *ngIf="isFinished" >
+        Reiniciar o quiz
+    </button>
+</div>
